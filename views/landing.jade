@@ -1,0 +1,52 @@
+doctype html
+html
+  head
+    title
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(name="description", content="")
+    meta(name="author", content="")
+    link(href="/css/bootstrap.min.css", rel="stylesheet", media="screen")
+    link(href="/css/main.css", rel="stylesheet", media="screen")
+    link(href="/css/font-awesome.min.css", rel="stylesheet", media="screen")
+    link(href="/css/bootstrap.css", rel="stylesheet", media="screen")
+    link(href="/css/style.css", rel="stylesheet", media="screen")
+    script(src="js/jquery.js")
+    script(src="js/bootstrap.min.js")
+    script(src="js/main.js")
+    script(src="js/Parsley/parsley.js", type="text/javascript")
+    script(src="js/effect_ui.js")
+  body
+    section#section_top_bg(data-type="background")
+      section#section_top_overlay
+        #section_2_content.row
+          .col-md-12(style="text-align:center;")
+            h1#title Lockness
+            h2#subtext A custom built smart lock project.
+            br
+            br
+            #register_content(style="display:none;")
+              form(role="form", action="/register", method="post", style="max-width: 300px;")
+                .form-group
+                  input.form-control(type="text", name="username", placeholder="Enter Username")
+                .form-group
+                  input.form-control(type="text", name="firstname", placeholder="Enter your First Name")
+                .form-group
+                  input.form-control(type="text", name="email", placeholder="Enter your E-mail")
+                .form-group
+                  input.form-control(type="password", name="password", placeholder="Password")
+                .form-group
+                  input.form-control(type="password", name="password_2", placeholder="Confirm Password")
+                button.btn.btn-default(type="submit") Submit
+                a(href="/")
+                  button.btn.btn-primary(type="button") Nevermind
+            #slide_div(style="display:none;")
+              form(role="form", action="/", method="post", style="max-width: 420px; margin-left:auto; margin-right:auto;", parsley-validate="")
+                .form-group
+                  input#input_field_name.form-control(type="text", name="username", placeholder="Enter Username", parsley-trigger="change", required="")
+                .form-group
+                  input#input_field_pw.form-control(type="password", name="password", placeholder="Password", parsley-trigger="change", required="")
+                button#login_form_button.btn.btn-default(type="submit") Log In
+                button#register_form_button.btn.btn-primary(type="button") Register
+            button#login_button.btn.btn-warning(type="button") Login
+        // end fluid row

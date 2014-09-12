@@ -1,0 +1,787 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Timoti
+    // PACE LOAD BAR PLUGIN - This creates the subtle load bar effect at the top of the page.
+    // GLOBAL STYLES - Include these on every page.
+    link(href="css/bootstrap.min.css", rel="stylesheet")
+    // PAGE LEVEL PLUGIN STYLES
+    // THEME STYLES - Include these on every page.
+    link(href="css/style2.css", rel="stylesheet")
+    // THEME DEMO STYLES - Use these styles for reference if needed. Otherwise they can be deleted.
+    link(href="css/demo.css", rel="stylesheet")
+    //if lt IE 9
+      script(src="js/html5shiv.js")
+      script(src="js/respond.min.js")
+    style(type="text/css")
+    style(type="text/css")
+      .jqstooltip { position: absolute;left: 0px;top: 0px;visibility: hidden;background: rgb(0, 0, 0) transparent;background-color: rgba(0,0,0,0.6);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";color: white;font: 10px arial, san serif;text-align: left;white-space: nowrap;padding: 5px;border: 1px solid white;z-index: 10000;}
+      .jqsfield { color: white;font: 10px arial, san serif;text-align: left;}
+  body.pace-done
+    #logout_background.popup_background(style="opacity: 0; visibility: hidden; position: fixed; top: 0px; right: 0px; bottom: 0px; left: 0px; z-index: 2000; transition: 0.3s ease-in-out; -webkit-transition: 0.3s ease-in-out; background-color: black;")
+    #logout_wrapper.popup_wrapper(style="opacity: 0; visibility: hidden; position: fixed; overflow: auto; z-index: 2001; transition: 0.3s ease-in-out; -webkit-transition: 0.3s ease-in-out; top: 0px; right: 0px; left: 0px; bottom: 0px; text-align: center; display: none;")
+      #logout.popup_content(data-popup-initialized="true", aria-hidden="true", role="dialog", aria-labelledby="open_46040477", style="opacity: 0; visibility: hidden; display: inline-block; outline: none; transition: 0.3s ease-in-out; -webkit-transition: 0.3s ease-in-out; text-align: left; position: relative; vertical-align: middle;")
+        .logout-message
+          img.img-circle.img-logout(src="img/profile-pic.jpg", alt="")
+          h3
+            i.fa.fa-sign-out.text-green
+            | Ready to go?
+          p
+            | Select "Logout" below if you are ready
+            br
+            | to end your current session.
+          ul.list-inline
+            li
+              a.btn.btn-green(href="login.html")
+                strong Logout
+            li
+              button.logout_close.btn.btn-green Cancel
+      .popup_align(style="display: inline-block; vertical-align: middle; height: 100%;")
+    .pace.pace-inactive
+      .pace-progress(data-progress-text="100%", data-progress="99", style="width: 100%;")
+        .pace-progress-inner
+      .pace-activity
+    #wrapper
+      // begin TOP NAVIGATION
+      nav.navbar-top.navbar-fixed-top(role="navigation")
+        // begin BRAND HEADING
+        .navbar-header
+          button.navbar-toggle.pull-right(type="button", data-toggle="collapse", data-target=".sidebar-collapse")
+            i.fa.fa-bars
+            | Menu
+          .navbar-brand
+            div(style="width:300px")
+              .col-lg-6.col-md-6.col-sm-4.col-xs-3
+                a.navbar-brand(href="index.html")
+                  img(src="img/pestana.png", style="margin-top:-26px; margin-top: -34px;width: 65px;")
+              .col-lg-6.col-md-6.col-sm-4.col-xs-3(style="height: 50px;")
+                h1(style="margin-left: -78px;margin-top: -7px;") Timoti
+        // end BRAND HEADING
+        .nav-top
+          // begin LEFT SIDE WIDGETS
+          ul.nav.navbar-left
+            li.tooltip-sidebar-toggle
+              a#sidebar-toggle(href="#", data-toggle="tooltip", data-placement="right", title="Menu Desplega")
+                span.glyphicon.glyphicon-align-left
+            // You may add more widgets here using <li>
+          // end LEFT SIDE WIDGETS
+          // begin MESSAGES/ALERTS/TASKS/USER ACTIONS DROPDOWNS
+          ul.nav.navbar-right
+            // begin MESSAGES DROPDOWN
+            li.dropdown
+              a.messages-link.dropdown-toggle(href="#", data-toggle="dropdown")
+                span.glyphicon.glyphicon-envelope
+                span.number 4
+                i.fa.fa-caret-down
+              ul.dropdown-menu.dropdown-scroll.dropdown-messages
+                // Messages Dropdown Heading
+                li.dropdown-header
+                  i.fa.fa-envelope
+                  | 4 New Messages
+                // Messages Dropdown Body - This is contained within a SlimScroll fixed height box. You can change the height using the SlimScroll jQuery features.
+                .slimScrollDiv(style="position: relative; overflow: hidden; width: auto; height: 200px;")
+                  li#messageScroll(style="overflow: hidden; width: auto; height: 200px;")
+                    ul.list-unstyled
+                      li
+                        a(href="#")
+                          .row
+                            .col-xs-2
+                              img.img-circle(src="img/user-profile-1.jpg", alt="")
+                            .col-xs-10
+                              p
+                                strong Jane Smith
+                                | : Hi again! I wanted to let you know that the order...
+                              p.small
+                                i.fa.fa-clock-o
+                                | 12 minutes ago
+                      li
+                        a(href="#")
+                          .row
+                            .col-xs-2
+                              img.img-circle(src="img/user-profile-2.jpg", alt="")
+                            .col-xs-10
+                              p
+                                strong Roddy Austin
+                                | : Thanks for the info, if you need anything from...
+                              p.small
+                                i.fa.fa-clock-o
+                                | 3:39 PM
+                      li
+                        a(href="#")
+                          .row
+                            .col-xs-2
+                              img.img-circle(src="img/user-profile-3.jpg", alt="")
+                            .col-xs-10
+                              p
+                                strong Stacy Gibson
+                                | : Hey, what was the purchase order number for the...
+                              p.small
+                                i.fa.fa-clock-o
+                                | Yesterday at 10:23 AM
+                      li
+                        a(href="#")
+                          .row
+                            .col-xs-2
+                              img.img-circle(src="img/user-profile-4.jpg", alt="")
+                            .col-xs-10
+                              p
+                                strong Jeffrey Cortez
+                                | : Check out this video I found the other day, it"s...
+                              p.small
+                                i.fa.fa-clock-o
+                                | Tuesday at 12:23 PM
+                  .slimScrollBar(style="width: 7px; position: absolute; top: 0px; opacity: 0.4; display: block; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; z-index: 99; right: 1px; background: rgb(0, 0, 0);")
+                  .slimScrollRail(style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(51, 51, 51);")
+                // Messages Dropdown Footer
+                li.dropdown-footer
+                  a(href="mailbox.html") Read All Messages
+              // /.dropdown-menu
+            // /.dropdown
+            // end MESSAGES DROPDOWN
+            // begin ALERTS DROPDOWN
+            li.dropdown
+              a.alerts-link.dropdown-toggle(href="#", data-toggle="dropdown")
+                span.glyphicon.glyphicon-bell
+                span.number 9
+                i.fa.fa-caret-down
+              ul.dropdown-menu.dropdown-scroll.dropdown-alerts
+                // Alerts Dropdown Heading
+                li.dropdown-header
+                  i.fa.fa-bell
+                  | 9 New Alerts
+                // Alerts Dropdown Body - This is contained within a SlimScroll fixed height box. You can change the height using the SlimScroll jQuery features.
+                .slimScrollDiv(style="position: relative; overflow: hidden; width: auto; height: 200px;")
+                  li#alertScroll(style="overflow: hidden; width: auto; height: 200px;")
+                    ul.list-unstyled
+                      li
+                        a(href="#")
+                          .alert-icon.green.pull-left
+                            i.fa.fa-money
+                          | Order #2931 Received
+                          span.small.pull-right
+                            strong
+                              em 3 minutes ago
+                      li
+                        a(href="#")
+                          .alert-icon.blue.pull-left
+                            i.fa.fa-comment
+                          | New Comments
+                          span.badge.blue.pull-right 15
+                      li
+                        a(href="#")
+                          .alert-icon.orange.pull-left
+                            i.fa.fa-wrench
+                          | Crawl Errors Detected
+                          span.badge.orange.pull-right 3
+                      li
+                        a(href="#")
+                          .alert-icon.yellow.pull-left
+                            i.fa.fa-question-circle
+                          | Server #2 Not Responding
+                          span.small.pull-right
+                            strong
+                              em 5:25 PM
+                      li
+                        a(href="#")
+                          .alert-icon.red.pull-left
+                            i.fa.fa-bolt
+                          | Server #4 Crashed
+                          span.small.pull-right
+                            strong
+                              em 3:34 PM
+                      li
+                        a(href="#")
+                          .alert-icon.green.pull-left
+                            i.fa.fa-plus-circle
+                          | New Users
+                          span.badge.green.pull-right 5
+                      li
+                        a(href="#")
+                          .alert-icon.orange.pull-left
+                            i.fa.fa-download
+                          | Downloads
+                          span.badge.orange.pull-right 16
+                      li
+                        a(href="#")
+                          .alert-icon.purple.pull-left
+                            i.fa.fa-cloud-upload
+                          | Server #8 Rebooted
+                          span.small.pull-right
+                            strong
+                              em 12 hours ago
+                      li
+                        a(href="#")
+                          .alert-icon.red.pull-left
+                            i.fa.fa-bolt
+                          | Server #8 Crashed
+                          span.small.pull-right
+                            strong
+                              em 12 hours ago
+                  .slimScrollBar(style="width: 7px; position: absolute; top: 0px; opacity: 0.4; display: block; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; z-index: 99; right: 1px; background: rgb(0, 0, 0);")
+                  .slimScrollRail(style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(51, 51, 51);")
+                // Alerts Dropdown Footer
+                li.dropdown-footer
+                  a(href="#") View All Alerts
+              // /.dropdown-menu
+            // /.dropdown
+            // end ALERTS DROPDOWN
+            // begin TASKS DROPDOWN
+            li.dropdown
+              a.tasks-link.dropdown-toggle(href="#", data-toggle="dropdown")
+                span.glyphicon.glyphicon-tasks
+                span.number 10
+                i.fa.fa-caret-down
+              ul.dropdown-menu.dropdown-scroll.dropdown-tasks
+                // Tasks Dropdown Header
+                li.dropdown-header
+                  i.fa.fa-tasks
+                  | 10 Pending Tasks
+                // Tasks Dropdown Body - This is contained within a SlimScroll fixed height box. You can change the height using the SlimScroll jQuery features.
+                .slimScrollDiv(style="position: relative; overflow: hidden; width: auto; height: 200px;")
+                  li#taskScroll(style="overflow: hidden; width: auto; height: 200px;")
+                    ul.list-unstyled
+                      li
+                        a(href="#")
+                          p
+                            | Software Update 2.1
+                            span.pull-right
+                              strong 60%
+                          .progress
+                            .progress-bar(role="progressbar", aria-valuenow="60", aria-valuemin="0", aria-valuemax="100", style="width: 60%;")
+                      li
+                        a(href="#")
+                          p
+                            | Server #2 Hardware Upgrade
+                            span.pull-right
+                              strong 90%
+                          .progress.progress-striped
+                            .progress-bar.progress-bar-success(role="progressbar", aria-valuenow="90", aria-valuemin="0", aria-valuemax="100", style="width: 90%;")
+                      li
+                        a(href="#")
+                          p
+                            | Call Ticket #2032
+                            span.pull-right
+                              strong 72%
+                          .progress.progress-striped.active
+                            .progress-bar.progress-bar-warning(role="progressbar", aria-valuenow="72", aria-valuemin="0", aria-valuemax="100", style="width: 72%;")
+                      li
+                        a(href="#")
+                          p
+                            | Emergency Maintenance
+                            span.pull-right
+                              strong 36%
+                          .progress.progress-striped
+                            .progress-bar.progress-bar-danger(role="progressbar", aria-valuenow="36", aria-valuemin="0", aria-valuemax="100", style="width: 36%;")
+                      li
+                        a(href="#")
+                          p
+                            | Purchase Order #439
+                            span.pull-right
+                              strong 52%
+                          .progress.progress-striped
+                            .progress-bar.progress-bar-info(role="progressbar", aria-valuenow="52", aria-valuemin="0", aria-valuemax="100", style="width: 52%;")
+                      li
+                        a(href="#")
+                          p
+                            | March Content Update
+                            span.pull-right
+                              strong 14%
+                          .progress
+                            .progress-bar.progress-bar-success(role="progressbar", aria-valuenow="14", aria-valuemin="0", aria-valuemax="100", style="width: 14%;")
+                      li
+                        a(href="#")
+                          p
+                            | Client #42 Data Scrubbing
+                            span.pull-right
+                              strong 68%
+                          .progress.progress-striped
+                            .progress-bar(role="progressbar", aria-valuenow="68", aria-valuemin="0", aria-valuemax="100", style="width: 68%;")
+                      li
+                        a(href="#")
+                          p
+                            | PHP Upgrade Server #6
+                            span.pull-right
+                              strong 85%
+                          .progress
+                            .progress-bar.progress-bar-warning(role="progressbar", aria-valuenow="85", aria-valuemin="0", aria-valuemax="100", style="width: 85%;")
+                      li
+                        a(href="#")
+                          p
+                            | Malware Scan
+                            span.pull-right
+                              strong 66%
+                          .progress.progress-striped.active
+                            .progress-bar.progress-bar-danger(role="progressbar", aria-valuenow="66", aria-valuemin="0", aria-valuemax="100", style="width: 66%;")
+                      li
+                        a(href="#")
+                          p
+                            | New Employee Intake
+                            span.pull-right
+                              strong 98%
+                          .progress.progress-striped.active
+                            .progress-bar.progress-bar-success(role="progressbar", aria-valuenow="14", aria-valuemin="0", aria-valuemax="100", style="width: 98%;")
+                  .slimScrollBar(style="width: 7px; position: absolute; top: 0px; opacity: 0.4; display: block; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; z-index: 99; right: 1px; background: rgb(0, 0, 0);")
+                  .slimScrollRail(style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(51, 51, 51);")
+                // Tasks Dropdown Footer
+                li.dropdown-footer
+                  a(href="#") View All Tasks
+              // /.dropdown-menu
+            // /.dropdown
+            // end TASKS DROPDOWN
+            // begin USER ACTIONS DROPDOWN
+            li.dropdown
+              a.dropdown-toggle(href="#", data-toggle="dropdown")
+                span.glyphicon.glyphicon-user
+                i.fa.fa-caret-down
+              ul.dropdown-menu.dropdown-user
+                li
+                  a(href="profile.html")
+                    i.fa.fa-user
+                    | My Profile
+                li
+                  a(href="mailbox.html")
+                    i.fa.fa-envelope
+                    | My Messages
+                    span.badge.green.pull-right 4
+                li
+                  a(href="#")
+                    i.fa.fa-bell
+                    | My Alerts
+                    span.badge.orange.pull-right 9
+                li
+                  a(href="#")
+                    i.fa.fa-tasks
+                    | My Tasks
+                    span.badge.blue.pull-right 10
+                li
+                  a(href="calendar.html")
+                    i.fa.fa-calendar
+                    | My Calendar
+                li.divider
+                li
+                  a(href="#")
+                    i.fa.fa-gear
+                    | Settings
+                li
+                  a#open_46040477.logout_open(href="#logout", data-popup-ordinal="0")
+                    i.fa.fa-sign-out
+                    | Logout
+                    strong John Smith
+              // /.dropdown-menu
+            // /.dropdown
+            // end USER ACTIONS DROPDOWN
+          // /.nav
+          // end MESSAGES/ALERTS/TASKS/USER ACTIONS DROPDOWNS
+        // /.nav-top
+      // /.navbar-top
+      // end TOP NAVIGATION
+      // begin SIDE NAVIGATION
+      nav.navbar-side(role="navigation")
+        .navbar-collapse.sidebar-collapse.collapse
+          ul#side.nav.navbar-nav.side-nav
+            // begin SIDE NAV USER PANEL
+            // end SIDE NAV USER PANEL
+            // begin SIDE NAV SEARCH
+            li.nav-search
+              form(role="form")
+                input.form-control(type="search", placeholder="Search...")
+                button.btn
+                  i.glyphicon.glyphicon-search(style="margin-right: 4px;")
+            // end SIDE NAV SEARCH
+            // begin DASHBOARD LINK
+            li
+              a.active(href="inicio.html")
+                i.glyphicon.glyphicon-home
+                | Inicio
+            // end DASHBOARD LINK
+            // begin CHARTS DROPDOWN
+            li
+              a(href="catalogo.html")
+                i.glyphicon.glyphicon-shopping-cart
+                | Catalogo
+            // end CHARTS DROPDOWN
+            // begin FORMS DROPDOWN
+            li
+              a(href="cliente.html")
+                i.glyphicon.glyphicon-th-list
+                | Cliente
+            // end FORMS DROPDOWN
+            // begin CALENDAR LINK
+            li
+              a(href="pedido.html")
+                i.glyphicon.glyphicon-bell
+                | Pedido
+            // end CALENDAR LINK
+            // begin TABLES DROPDOWN
+            li
+              a(href="proveedor.html")
+                i.glyphicon.glyphicon-lock
+                | Proveedor
+            // end TABLES DROPDOWN
+            // begin TABLES DROPDOWN
+            li
+              a(href="producto.html")
+                i.glyphicon.glyphicon-list-alt
+                | Producto
+            // end TABLES DROPDOWN
+            // begin UI ELEMENTS DROPDOWN
+            li.panel
+              a.accordion-toggle(href="javascript:;", data-parent="#side", data-toggle="collapse", data-target="#ui-elements")
+                i.glyphicon.glyphicon-folder-open
+                | Movimiento
+                i.glyphicon.glyphicon-chevron-down(style="margin-left: 96px;")
+              ul#ui-elements.collapse.nav
+                li
+                  a(href="venta.html")
+                    i.fa.fa-angle-double-right
+                    | Venta
+                li
+                  a(href="compra.html")
+                    i.fa.fa-angle-double-right
+                    | Compra
+                li
+                  a(href="descarte.html")
+                    i.fa.fa-angle-double-right
+                    | Descarte
+                li
+                  a(href="devolucion.html")
+                    i.fa.fa-angle-double-right
+                    | Devolucion
+            // end UI ELEMENTS DROPDOWN
+            // end PAGES DROPDOWN
+          // /.side-nav
+        // /.navbar-collapse
+      // /.navbar-side
+      // end SIDE NAVIGATION
+      // begin MAIN PAGE CONTENT
+      #page-wrapper
+        .page-content.page-content-ease-in
+          // begin PAGE TITLE AREA
+          // Use this section for each page's title and breadcrumb layout. In this example a date range picker is included within the breadcrumb.
+          .row
+            .col-lg-12
+              .page-title
+                h1(style="font-size: 35px;\
+                font-weight: 700;")
+                  | Inicio
+                  small Contenido
+                ol.breadcrumb
+                  li.active
+                    a.fa.fa-dashboard(href="#top") Inicio
+                  li
+                    a.fa.fa-dashboard(href="#chat") Chat
+                  li
+                    a.fa.fa-dashboard(href="#transacciones") Transacciones
+                  li.pull-right
+                    #reportrange.btn.btn-green.btn-square.date-picker
+                      i.fa.fa-calendar
+                      span.date-range June 2, 2014 - July 1, 2014
+                      i.fa.fa-caret-down
+            // /.col-lg-12
+          // /.row
+          // end PAGE TITLE AREA
+          // begin DASHBOARD CIRCLE TILES
+          #top.row
+            .col-lg-2.col-sm-6
+              .circle-tile
+                a(href="cliente.html")
+                  .circle-tile-heading.dark-blue
+                    .circle-tile-number.text-faded(style="margin-top: 17px;")
+                      i.glyphicon.glyphicon-user
+                .circle-tile-content.dark-blue
+                  .circle-tile-description.text-faded
+                    | Cliente
+                  .circle-tile-number.text-faded
+                    | 265
+                    span#sparklineA
+                      canvas(width="29", height="24", style="display: inline-block; width: 29px; height: 24px; vertical-align: top;")
+                  a.circle-tile-footer(href="cliente.html")
+                    | More Info
+                    i.fa.fa-chevron-circle-right
+            .col-lg-2.col-sm-6
+              .circle-tile
+                a(href="#")
+                  .circle-tile-heading.green
+                    .circle-tile-number.text-faded(style="margin-top: 17px;")
+                      i.glyphicon.glyphicon-usd
+                .circle-tile-content.green
+                  .circle-tile-description.text-faded
+                    | Ganancias
+                  .circle-tile-number.text-faded
+                    | $32,384
+                  a.circle-tile-footer(href="#")
+                    | More Info
+                    i.fa.fa-chevron-circle-right
+            .col-lg-2.col-sm-6
+              .circle-tile
+                a(href="#")
+                  .circle-tile-heading.orange
+                    .circle-tile-number.text-faded(style="margin-top: 17px;")
+                      i.glyphicon.glyphicon-bell
+                .circle-tile-content.orange
+                  .circle-tile-description.text-faded
+                    | Alertas
+                  .circle-tile-number.text-faded
+                    | 9 New
+                  a.circle-tile-footer(href="#")
+                    | More Info
+                    i.fa.fa-chevron-circle-right
+            .col-lg-2.col-sm-6
+              .circle-tile
+                a(href="#")
+                  .circle-tile-heading.blue
+                    .circle-tile-number.text-faded(style="margin-top: 17px;")
+                      i.glyphicon.glyphicon-tasks
+                .circle-tile-content.blue
+                  .circle-tile-description.text-faded
+                    | Informes
+                  .circle-tile-number.text-faded
+                    | 10
+                    span#sparklineB
+                      canvas(width="24", height="24", style="display: inline-block; width: 24px; height: 24px; vertical-align: top;")
+                  a.circle-tile-footer(href="#")
+                    | More Info
+                    i.fa.fa-chevron-circle-right
+            .col-lg-2.col-sm-6
+              .circle-tile
+                a(href="#")
+                  .circle-tile-heading.red
+                    .circle-tile-number.text-faded(style="margin-top: 17px;")
+                      i.glyphicon.glyphicon-shopping-cart
+                .circle-tile-content.red
+                  .circle-tile-description.text-faded
+                    | Pedidos
+                  .circle-tile-number.text-faded
+                    | 24
+                    span#sparklineC
+                      canvas(width="34", height="24", style="display: inline-block; width: 34px; height: 24px; vertical-align: top;")
+                  a.circle-tile-footer(href="#")
+                    | More Info
+                    i.fa.fa-chevron-circle-right
+            .col-lg-2.col-sm-6
+              .circle-tile
+                a(href="#")
+                  .circle-tile-heading.purple
+                    .circle-tile-number.text-faded(style="margin-top: 17px;")
+                      i.glyphicon.glyphicon-briefcase
+                .circle-tile-content.purple
+                  .circle-tile-description.text-faded
+                    | Mentions
+                  .circle-tile-number.text-faded
+                    | 96
+                    span#sparklineD
+                      canvas(width="36", height="24", style="display: inline-block; width: 36px; height: 24px; vertical-align: top;")
+                  a.circle-tile-footer(href="#")
+                    | More Info
+                    i.fa.fa-chevron-circle-right
+          // end DASHBOARD CIRCLE TILES
+          // inicio contenido chat
+          #chat.row
+            .col-lg-12
+              .portlet.portlet-default
+                .portlet-heading
+                  .portlet-title
+                    h4
+                      i.fa.fa-circle.text-green
+                      | Cuadro de chat
+                  .portlet-widgets
+                    .btn-group
+                      button.btn.btn-white.dropdown-toggle.btn-xs(type="button", data-toggle="dropdown")
+                        i.fa.fa-circle.text-green
+                        | Status
+                        span.caret
+                      ul.dropdown-menu(role="menu")
+                        li
+                          a(href="#")
+                            i.fa.fa-circle.text-green
+                            | Online
+                        li
+                          a(href="#")
+                            i.fa.fa-circle.text-orange
+                            | Away
+                        li
+                          a(href="#")
+                            i.fa.fa-circle.text-red
+                            | Offline
+                    span.divider
+                    a(data-toggle="collapse", data-parent="#accordion", href="#chat")
+                      i.fa.fa-chevron-down
+                  .clearfix
+                #chat.panel-collapse.collapse.in
+                  .slimScrollDiv(style="position: relative; overflow: hidden; width: auto; height: 300px;")
+                    .portlet-body.chat-widget(style="overflow: hidden; width: auto; height: 300px;")
+                      .row
+                        .col-lg-12
+                          p.text-center.text-muted.small January 1, 2014 at 12:23 PM
+                      .row
+                        .col-lg-12
+                          .media
+                            a.pull-left(href="#")
+                              img.media-object.img-circle(src="img/user-profile-1.jpg", alt="")
+                            .media-body
+                              h4.media-heading
+                                | Jane Smith
+                                span.small.pull-right 12:23 PM
+                              p
+                                | Hi, I wanted to make sure you got the latest product report. Did Roddy get it to you?
+                      hr
+                      .row
+                        .col-lg-12
+                          .media
+                            a.pull-left(href="#")
+                              img.media-object.img-circle(src="img/profile-pic-small.jpg", alt="")
+                            .media-body
+                              h4.media-heading
+                                | John Smith
+                                span.small.pull-right 12:28 PM
+                              p Yeah I did. Everything looks good.
+                              p Did you have an update on purchase order #302?
+                      hr
+                      .row
+                        .col-lg-12
+                          .media
+                            a.pull-left(href="#")
+                              img.media-object.img-circle(src="img/user-profile-1.jpg", alt="")
+                            .media-body
+                              h4.media-heading
+                                | Jane Smith
+                                span.small.pull-right 12:39 PM
+                              p
+                                | No not yet, the transaction hasn"t cleared yet. I will let you know as soon as everything goes through. Any idea where you want to get lunch today?
+                      hr
+                    .slimScrollBar(style="width: 7px; position: absolute; top: 70px; opacity: 0.4; display: block; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; z-index: 99; right: 1px; height: 229.59183673469386px; background: rgb(0, 0, 0);")
+                    .slimScrollRail(style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(51, 51, 51);")
+                  .portlet-footer
+                    form(role="form")
+                      .form-group
+                        textarea.form-control(placeholder="Enter message...")
+                      .form-group
+                        button.btn.btn-default.pull-right(type="submit") Send
+                        .clearfix
+            #transacciones.col-lg-12
+              .portlet.portlet-green
+                .portlet-heading
+                  .portlet-title
+                    h4
+                      i.fa.fa-exchange.fa-fw
+                      | Transacciones recientes
+                  .portlet-widgets
+                    a(data-toggle="collapse", data-parent="#accordion", href="#transactionsPortlet")
+                      i.fa.fa-chevron-down
+                  .clearfix
+                #transactionsPortlet.panel-collapse.collapse.in
+                  .portlet-body
+                    .table-responsive.dashboard-demo-table
+                      table.table.table-bordered.table-striped.table-hover
+                        thead
+                          tr
+                            th Date
+                            th Time
+                            th Amount
+                            th Status
+                        tbody
+                          tr
+                            td 1/31/14
+                            td 6:14 PM
+                            td $12.07
+                            td
+                              a.btn.btn-xs.btn-orange.disabled
+                                i.fa.fa-clock-o
+                                | Pending
+                          tr
+                            td 1/31/14
+                            td 6:02 PM
+                            td $5.32
+                            td
+                              a.btn.btn-xs.btn-orange.disabled
+                                i.fa.fa-clock-o
+                                | Pending
+                          tr
+                            td 1/31/14
+                            td 5:56 PM
+                            td $6.58
+                            td
+                              a.btn.btn-xs.btn-green
+                                i.fa.fa-arrow-circle-right
+                                | View Order
+                          tr
+                            td 1/31/14
+                            td 5:12 PM
+                            td $15.61
+                            td
+                              a.btn.btn-xs.btn-green
+                                i.fa.fa-arrow-circle-right
+                                | View Order
+                          tr
+                            td 1/31/14
+                            td 5:02 PM
+                            td $9.89
+                            td
+                              a.btn.btn-xs.btn-green
+                                i.fa.fa-arrow-circle-right
+                                | View Order
+                          tr
+                            td 1/31/14
+                            td 4:47 PM
+                            td $2.21
+                            td
+                              a.btn.btn-xs.btn-red
+                                i.fa.fa-warning
+                                | Error
+                          tr
+                            td 1/31/14
+                            td 4:32 PM
+                            td $5.17
+                            td
+                              a.btn.btn-xs.btn-default
+                                i.fa.fa-arrow-circle-right
+                                | Special Order
+                    a.btn.btn-green View All Transactions
+            // /.col-lg-12
+          // fin contenido chat
+        // /#page-wrapper
+        // end MAIN PAGE CONTENT
+      // /#wrapper
+      // GLOBAL js
+      script(src="js/jquery.min.js")
+      script(src="js/bootstrap.min.js")
+      script(src="js/jquery.slimscroll.min.js")
+      script(src="js/jquery.popupoverlay.js")
+      script(src="js/defaults.js")
+      // Logout Notification Box
+      // /#logout
+      // Logout Notification jQuery
+      script(src="js/logout.js")
+      // HISRC Retina Images
+      script(src="js/hisrc.js")
+      // PAGE LEVEL PLUGIN js
+      // HubSpot Messenger
+      script(src="js/messenger.min.js")
+      script(src="js/messenger-theme-flat.js")
+      // Date Range Picker
+      script(src="js/moment.js")
+      script(src="js/daterangepicker.js")
+      // Morris Charts
+      script(src="js/raphael-2.1.0.min.js")
+      script(src="js/morris.js")
+      // Flot Charts
+      script(src="js/jquery.flot.js")
+      script(src="js/jquery.flot.resize.js")
+      // Sparkline Charts
+      script(src="js/jquery.sparkline.min.js")
+      // Moment.js
+      script(src="js/moment.min.js")
+      // jQuery Vector Map
+      script(src="js/jquery-jvectormap-1.2.2.min.js")
+      script(src="js/jquery-jvectormap-world-mill-en.js")
+      script(src="js/map-demo-data.js")
+      // Easy Pie Chart
+      script(src="js/jquery.easypiechart.min.js")
+      // DataTables
+      script(src="js/jquery.dataTables.js")
+      script(src="js/datatables-bs3.js")
+      // THEME js
+      script(src="js/flex.js")
+      script(src="js/dashboard-demo.js")
