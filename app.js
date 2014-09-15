@@ -1,62 +1,45 @@
-// dependencies
-var fs = require('fs');
-var http = require('http');
+// Archivo de configuración del servidor
+
+// Llamamos a las librerías
 var express = require('express');
 var routes = require('./routes');
+var http = require('http');
 var path = require('path');
-var mongoose = require('mongoose');
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-
-
-// global config
 var app = express();
-var io = require('socket.io').listen(app);
+var session = require('express-session');
+var flash = require('connect-flash');
+var passport = require('passport');
 
-app.set('port', process.env.PORT || 1824);
-app.set('views', __dirname + '/views');
+// Configuraciones de Express
+// La app correrá en el puerto 3000
+app.set('port', process.env.PORT || 3001);
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-app.set('view options',{layout: false});
-
-
-
-//app.use(express.logger())
 app.use(express.favicon());
-app.use(express.cookieParser("thissecretrocks"));
-
-app.use(express.bodyParser());
+app.use(express.logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded());
 app.use(express.methodOverride());
-app.use(express.session({ secret: 'thissecretrocks', cookie: { maxAge: 60000 } }));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.cookieParser());
+app.use(express.session({ secret: 'esto es secreto'}));
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 app.use(app.router);
-app.use(express.static(path.join(__dirname, 'public')));
 
-// env config
-app.configure('development', function(){
-    app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
-});
-
-app.configure('production', function(){
+// development only
+if ('development' == app.get('env')) {
     app.use(express.errorHandler());
-});
+}
 
-var Account = require('./models/account');
-passport.use(new LocalStrategy(Account.authenticate()));
-passport.serializeUser(Account.serializeUser());
-passport.deserializeUser(Account.deserializeUser());
+// Passport
+require('./config/passport')(passport);
 
-mongoose.connect('mongodb://localhost/Timoti');
+// Routes
+require('./config/routes')(app, passport);
 
-require('./routes')(app);
-
-
-// mongo model
-// var Model_Name = require('add_your_models_here');
-
-
-// run server
-app.listen(app.get('port'), function(){
-  console.log('\nTimoti Corriendo en puerto: ' + app.get('port'));
+var server = http.createServer(app).listen(app.get('port'), function(){
+    console.log('The magic happens on port ' + app.get('port'));
 });

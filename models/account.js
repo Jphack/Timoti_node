@@ -1,6 +1,5 @@
 var mongoose = require('mongoose'),
-	Schema = mongoose.Schema,
-	passportLocalMongoose = require('passport-local-mongoose');
+	Schema = mongoose.Schema;
 
 var registro = new Schema({
   username: String,
@@ -8,5 +7,4 @@ var registro = new Schema({
   email:String
 });
 
-registro.plugin(passportLocalMongoose);
-module.exports = mongoose.model('registro', registro);
+Account = module.exports = registro;
